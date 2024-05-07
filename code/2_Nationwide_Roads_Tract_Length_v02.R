@@ -31,10 +31,15 @@ b <- as.numeric(args[1]) # county FIPS index
 
 # Set directories where you want to read in and output data
 #
-fips_dir <- "/projectnb/acres/Census/RawData/" # directory where FIPS file is stored, only needed if using bash scripts
-indir <- "/projectnb/anchor/Data_Hub/Data_Requests/ZachP/Nationwide_TIGRIS/RawData/" # this directory is where the UTM projection zones are to be stored
-roads_interdir <- "/projectnb/anchor/Data_Hub/Data_Requests/ZachP/Nationwide_TIGRIS/IntermediateData/County_Output/" # directory where your previously generated roads data is stored
-roads_outdir <- "/projectnb/anchor/Data_Hub/Data_Requests/ZachP/Nationwide_TIGRIS/OutputData/" # directory where you want to output your data
+fips_dir <- "" # directory where FIPS file is stored, only needed if using bash scripts
+               # This should be COUNTY-fips data. For county level fips, this resource can be used: https://transition.fcc.gov/oet/info/maps/census/fips/fips.txt
+               # Alternatively nationwide counties can be queried with the tigris counties(year = 2020) function, and subset to the FIPS column
+indir <- "" # this directory is where the UTM projection zones are to be stored
+            # We use a projected coordinate system to ensure we process lengths in meters and to expedite the processing time.
+            # UTM zones are region-specific projected coordinate systems that can ensure the projection is specific to the region being processed.
+            # UTM zones with requisite coordinate data for subsetting are available from: 
+roads_interdir <- "" # directory where your previously generated roads data is stored
+roads_outdir <- "" # directory where you want to output your data
 
 # Specify county to be used based on bash input
 #
