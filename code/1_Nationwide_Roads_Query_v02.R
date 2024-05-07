@@ -16,8 +16,9 @@ library(tigris)
 
 # Set directories where you want to read in and output data
 #
-fips_dir <- "/projectnb/acres/Census/RawData/" # directory where FIPS file is stored, only needed if using bash scripts
-roads_dir <- "/projectnb/anchor/Data_Hub/Data_Requests/ZachP/Nationwide_TIGRIS/IntermediateData/" # directory where you want your roads data to be placed
+fips_dir <-  # directory where FIPS file is stored, only needed if using bash scripts
+             # a list of FIPS codes can be found at https://transition.fcc.gov/oet/info/maps/census/fips/fips.txt 
+roads_dir <- # directory where you want your roads data to be placed
 
 # The following variables come from the command line when running as bash. Bash
 # scripting is a method for expediting processing using a computing cluster.
@@ -25,7 +26,7 @@ roads_dir <- "/projectnb/anchor/Data_Hub/Data_Requests/ZachP/Nationwide_TIGRIS/I
 # a series of indices that will be used to process multiple states simultaneously
 #
 # If you are only processing a single state, this is not necessary. The bash script
-# language below including lines 22 through 31 can be removed, and you can 
+# language below can be removed, and you can 
 # add a line to specify the stateFIPS you would like to process.
 #
 args <- commandArgs(trailingOnly = TRUE)
@@ -33,7 +34,7 @@ b <- as.numeric(args[1]) # state FIPS index; b=8 for DC
 
 # %%%%%%%%%%%%%%%%%%%% IDENTIFY STATE FIPS OF INTEREST %%%%%%%%%%%%%%%%%%%%%%% #
 # Reading in stateFIPS to allow for filtering by state in bash script. If you
-# are using a bash script
+# are not using a bash script just use line 43 below.
 #
 stateFIPS <- read.csv(paste0(fips_dir, "US_States_FIPS_Codes.csv"), stringsAsFactors = FALSE)
 stateFIPS <- stateFIPS$StFIPS     #integer; does not contain leading zeroes
