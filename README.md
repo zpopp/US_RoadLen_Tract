@@ -17,13 +17,14 @@ For more information about querying roads data through the tigris package, see: 
 	
 # Workflow
 The R code provided includes steps for 
-  1) Downloading TIGER/Line shapefiles for a county or series of counties using the R tigris package. 
-  2) Using the sf package to cut road shapes to fit into the census tracts where they fall, then calculating the length of the road within each tract. 
-  3) Adding the road length by class wihtin each tract. 
-  4) Combining data from multiple counties in separate R files into one nationwide shapefile.
+  1) Downloading TIGER/Line shapefiles for a county or series of counties using the R tigris package.
+  2) Projecting tract and road shapefiles within each county to the corresponding UTM projected coordinate system for the area.
+  3) Using the sf package to cut road shapes to fit into the census tracts where they fall.
+  4) Calculating sum road length by census tract overall and by class.
+  5) Combining data from multiple counties in separate R files into one nationwide tract sum road shapefile re-projected to a national coordinate system.
 
 # Dependencies
-The processing in this code to produce the Harvard Dataverse file was done using bash scripting. More information about bash scripting can be found here: . This allows for processing that would take a large amount of time and memory to be cut into smaller pieces. In this case, each county is processed separately. The biggest 'roadblock' in processing these data in an efficient way is the st_intersection (from library sf) function which cuts road shapes to the census tract. For a single large county, this process can take over 12 hours. 
+The processing in this code to produce the Harvard Dataverse file was done using bash scripting. This allows for processing that would take a large amount of time and memory to be cut into smaller pieces. In this case, each county is processed separately. 
 
 # Contact Information: 
 For correspondence about this processing, contact Zach Popp (zpopp@bu.edu)
