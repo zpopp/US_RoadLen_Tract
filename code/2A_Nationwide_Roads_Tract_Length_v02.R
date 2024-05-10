@@ -32,14 +32,15 @@ b <- as.numeric(args[1]) # county FIPS index
 # Set directories where you want to read in and output data
 #
 fips_dir <- "" # directory where FIPS file is stored, only needed if using bash scripts
-               # This should be COUNTY-fips data. For county level fips, this resource can be used: https://transition.fcc.gov/oet/info/maps/census/fips/fips.txt
+               # This should be COUNTY-fips data. For county level fips codes, this resource can be used: https://transition.fcc.gov/oet/info/maps/census/fips/fips.txt
                # Alternatively nationwide counties can be queried with the tigris counties(year = 2020) function, and subset to the FIPS column
 indir <- "" # this directory is where the UTM projection zones are to be stored
             # We use a projected coordinate system to ensure we process lengths in meters and to expedite the processing time.
             # UTM zones are region-specific projected coordinate systems that can ensure the projection is specific to the region being processed.
             # UTM zones with requisite coordinate data for subsetting are available from: 
+            # https://crs-explorer.proj.org/?searchText=NAD83(HARN)%20%2F%20UTM%20zone&ignoreWorld=false&allowDeprecated=false&authorities=EPSG&activeTypes=PROJECTED_CRS&map=osm
 roads_interdir <- "" # directory where your previously generated roads data is stored
-roads_outdir <- "" # directory where you want to output your data
+roads_outdir <- "" # directory where you want to output your tract data after tract aggregation
 
 # Specify county to be used based on bash input
 #
@@ -68,7 +69,7 @@ tl_2020_county <- tracts(
 
 # The process below is conducted to determine the appropriate projected coordinate
 # system for both the roads and census tract data. Projected coordinate systems
-# allow for computers to run spatial analysis faster. This faster computation
+# allow faster spatial analysis This faster computation
 # has the drawback of producing a distortion of the features which can, 
 # in this case, lead to a lengthening or shortening of road lenghts. Distortion
 # can be minimized by selecting a projection that is specific to a given region.

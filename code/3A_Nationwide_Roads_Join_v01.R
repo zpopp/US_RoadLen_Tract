@@ -16,8 +16,8 @@ library(sf)
 
 # Set directories for input and output
 #
-roads_county_dir <- "/projectnb/anchor/Data_Hub/Data_Requests/ZachP/Nationwide_TIGRIS/OutputData/"
-roads_combined_dir <- "/projectnb/anchor/Data_Hub/Data_Requests/ZachP/Nationwide_TIGRIS/OutputData/Combined/"
+roads_county_dir <- # this is the directory where the tract sum road length measures for each county has been stored
+roads_combined_dir <- # this is the directory where you want your final nationwide output
 
 # Create list of all county-wide tract-level road measures data
 #
@@ -35,13 +35,14 @@ for (i in 1:length(roads_files)) {
   #
   input <- readRDS(roads_files[i])
   
-  # Convert to data.frame and remove geometry. The county files are 
-  # each projected to a different UTM, and cannot be joined together
-  # as spatial objects. Because the UTM system divides the world into equal
-  # zones, the length outputs are expacted to be comparable across zones.
+  # The tract road length was calculated with distinct projected coordinate 
+  # systems based on the region within the US. We cannot create a nationwide
+  # shapefile from components with distinct coordinate systems. To create 
+  # the nationwide file, we will convert each county shapefile to a consistent 
+  # coordinate system. We use NAD 1983 as it is the coordinate system which the 
+  # tracts were initially read in as. 
   #
-  input <- as.data.frame(input)
-  input$geometry <- NULL
+  input <- st_transform(input, 4269)
   
   if (i == 1) { final <- input; next }
   
@@ -52,5 +53,5 @@ for (i in 1:length(roads_files)) {
 
 #Export rds file
 #
-saveRDS(final, paste0(roads_combined_dir, "Nationwide_TIGER_Roads_Length_Tract_Projected.rds"))
+saveRDS(final, paste0(roads_combined_dir, "Nationwide_2020_TIGER_Roads_Sum_Length_Tract.rds"))
 

@@ -3,11 +3,11 @@
 ##Date Modified:    02/21/2024
 ##Overview: The goal of these scripts is to query and process roads data from 
 ##          tigris to a census tract level road length measure by road class. 
-##          This script is used to download raw road data for all US counties.
+##          This script is used to download TIGER/Line road data for all US counties.
 ##          The roads are then intersected with census tracts using st_intersection (next file),
 ##          the length in each tract is calculated with st_length, and then sum
 ##          road lengths are calculated for each of the unique road classifications.
-##          Finally, a nationwide road lenght dataset is developed
+##          Finally, a nationwide road lenght dataset is constructed.
 ##
 ##Purpose:  Use tigris to download all roads for a state.
 ##          
@@ -22,8 +22,8 @@ roads_dir <- # directory where you want your roads data to be placed
 
 # The following variables come from the command line when running as bash. Bash
 # scripting is a method for expediting processing using a computing cluster.
-# To use this code, you would need to separately write a bash script that specifies
-# a series of indices that will be used to process multiple states simultaneously
+# To use this code, you would need to separately write a bash script (such as file 1B in the repository)
+# that specifies a series of indices which will be used to process multiple states simultaneously
 #
 # If you are only processing a single state, this is not necessary. The bash script
 # language below can be removed, and you can 
@@ -52,7 +52,7 @@ counties <- unique(counties[[grep("^COUNTYFP", names(counties), ignore.case = TR
 #
 state_roads <- roads(state = stateFIPS, county = c(counties), year = 2020)
 
-# Output state road file
+# Output state road file for use in next script
 saveRDS(state_roads, paste0(roads_dir, "tigris_roads_", stateFIPS, "_2020.rds"))
 
 
