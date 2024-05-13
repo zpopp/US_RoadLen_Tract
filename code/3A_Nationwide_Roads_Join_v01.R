@@ -51,6 +51,16 @@ for (i in 1:length(roads_files)) {
   final <- rbind(final, input)
 }
 
+# For all NA in dataset for road categories, we replace with 0
+# Because there are no roads intersecting with a given census tract, the length will be
+# calculated as NA, but this represents a 0 road length, so we substitute the 0 for clarity.
+#
+road_len_vars <- c("prim_len", "sec_len", "loc_len", "vehic_len", "ramp_len", "other_len", "total_len")
+
+for (i in c(road_len_vars)) {
+  final[[i]] <- ifelse(is.na(final[[i]]), 0, final[[i]])
+}
+
 #Export rds file
 #
 saveRDS(final, paste0(roads_combined_dir, "Nationwide_2020_TIGER_Roads_Sum_Length_Tract.rds"))
