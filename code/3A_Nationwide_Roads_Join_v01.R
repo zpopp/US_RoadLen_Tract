@@ -61,7 +61,23 @@ for (i in c(road_len_vars)) {
   final[[i]] <- ifelse(is.na(final[[i]]), 0, final[[i]])
 }
 
-#Export rds file
+# We will export the data in several formats that might be applicable for different
+# end users - R users, non-R users, spatial data users, non-spatial data users.
+
+# Export rds file
 #
 saveRDS(final, paste0(roads_combined_dir, "Nationwide_2020_TIGER_Roads_Sum_Length_Tract.rds"))
+
+# Export gpkg file
+#
+st_write(final, paste0(roads_combined_dir, "Nationwide_2020_TIGER_Roads_Sum_Length_Tract.gpkg"))
+
+# Remove geometry for tabular export
+#
+final_tab <- as.data.frame(final)
+final_tab$geometry <- NULL
+
+# Export csv file
+#
+write.csv(final_tab, paste0(roads_combined_dir, "Nationwide_2020_TIGER_Roads_Sum_Length_Tract.csv"), row.names=FALSE)
 
