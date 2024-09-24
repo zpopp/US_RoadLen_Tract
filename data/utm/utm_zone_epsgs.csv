@@ -1,0 +1,15 @@
+index, epsg_code, description, area_of_use
+2,2195,"NAD83(HARN) / UTM zone 2S", "American Samoa - Tutuila Aunu'u Ofu Olesega Ta'u and Rose islands."
+10,3740,"NAD83(HARN) / UTM zone 10N", "United States (USA) - between 126°W and 120°W - onshore - California; Oregon; Washington."
+11,3741,"NAD83(HARN) / UTM zone 11N", "United States (USA) - between 120°W and 114°W - onshore - Arizona; California; Idaho; Montana; Nevada; Oregon; Utah; Washington."
+12,3742,"NAD83(HARN) / UTM zone 12N", "United States (USA) - between 114°W and 108°W - Arizona; Colorado; Idaho; Montana; New Mexico; Utah; Wyoming."
+13,3743,"NAD83(HARN) / UTM zone 13N",  "United States (USA) - between 108°W and 102°W - Colorado; Montana; Nebraska; New Mexico; North Dakota; Oklahoma; South Dakota; Texas; Wyoming."
+14,3744,"NAD83(HARN) / UTM zone 14N",  "United States (USA) - between 102°W and 96°W - onshore - Iowa; Kansas; Minnesota; Nebraska; North Dakota; Oklahoma; South Dakota; Texas."
+15,3745,"NAD83(HARN) / UTM zone 15N",  "United States (USA) - between 96°W and 90°W - onshore - Arkansas; Illinois; Iowa; Kansas; Louisiana; Michigan; Minnesota; Mississippi; Missouri; Nebraska; Oklahoma; Tennessee; Texas;Wisconsin."
+16,3746,"NAD83(HARN) / UTM zone 16N",  "United States (USA) - between 90°W and 84°W - onshore - Alabama; Arkansas; Florida; Georgia; Indiana; Illinois; Kentucky; Louisiana; Michigan; Minnesota; Mississippi; Missouri; North Carolina; Ohio; Tennessee; Wisconsin."
+17,3747,"NAD83(HARN) / UTM zone 17N",  "United States (USA) - between 84°W and 78°W - onshore - Florida; Georgia; Maryland; Michigan; New York; North Carolina; Ohio; Pennsylvania; South Carolina; Tennessee; Virginia; West Virginia."
+18,3748,"NAD83(HARN) / UTM zone 18N",  "United States (USA) - between 78°W and 72°W - onshore - Connecticut; Delaware; Maryland; Massachusetts; New Hampshire; New Jersey; New York; North Carolina; Pennsylvania; Virginia; Vermont."
+19,3749,"NAD83(HARN) / UTM zone 19N",  "United States (USA) - between 72°W and 66°W - onshore - Connecticut; Maine; Massachusetts; New Hampshire; New York (Long Island); Rhode Island; Vermont."
+4,3750,"NAD83(HARN) / UTM zone 4N",  "United States (USA) - between 162°W and 156°W onshore - Hawaii."
+5,3751,"NAD83(HARN) / UTM zone 5N",  "United States (USA) - between 156°W and 150°W onshore - Hawaii."
+

@@ -44,7 +44,9 @@ roads_outdir <- "" # directory where you want to output your tract data after tr
 
 # Specify county to be used based on bash input
 #
-countyFIPS <- readRDS(paste0(fips_dir, "US_Counties_FIPS_Codes_2020.Rds"))
+countyFIPS <- read.csv(paste0(fips_dir, "US_Counties_FIPS_Codes_2020.csv"),
+                       colClasses = "character", check.names = F)
+colnames(countyFIPS)[1] <- "GEOID"
 countyFIPS <- countyFIPS$GEOID[b]
 
 # If you are not using a bash script than you can use the line below.
@@ -57,7 +59,7 @@ stateFIPS <- substr(countyFIPS, 1, 2)
 
 # Loading in road and state tract datasets
 #
-tigris_roads <- readRDS(paste0(roads_interdir, "tigris_roads_", countyFIPS, "_2020.rds"))
+tigris_roads <- readRDS(paste0(roads_interdir, "tigris_roads_", stateFIPS, "_2020.rds"))
 
 # Read in tract data for county using tigris
 #

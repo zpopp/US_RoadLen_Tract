@@ -5,7 +5,7 @@
 #$ -pe omp 16
 
 module load R/4.3.1
-Rscript code_dir/1_Nationwide_Roads_Query_v02.R $SGE_TASK_ID
+Rscript 1A_Nationwide_Roads_Query_v02.R $SGE_TASK_ID
 
 ## In Terminal, cd to the directory in which this bash script is located. 
 ## qsub -P project -t 1-51 1B_Nationwide_Roads_Query_v02.sh
