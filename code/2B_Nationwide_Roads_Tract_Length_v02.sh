@@ -5,7 +5,7 @@
 #$ -pe omp 8
 
 module load R/4.3.1
-Rscript code_dir/2_Nationwide_Roads_Tract_Length_v02.R $SGE_TASK_ID
+Rscript 2A_Nationwide_Roads_Tract_Length_v02.R $SGE_TASK_ID
 
 ## In Terminal, cd to the directory in which this bash script is located. 
 ## qsub -P project -t 1-3143 2B_Nationwide_Roads_Tract_Length_v02.sh

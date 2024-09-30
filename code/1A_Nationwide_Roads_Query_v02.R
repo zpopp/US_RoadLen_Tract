@@ -16,9 +16,9 @@ library(tigris)
 
 # Set directories where you want to read in and output data
 #
-fips_dir <-  # directory where FIPS file is stored, only needed if using bash scripts
+fips_dir <- "" # directory where FIPS file is stored, only needed if using bash scripts
              # a list of FIPS codes can be found at https://transition.fcc.gov/oet/info/maps/census/fips/fips.txt 
-roads_dir <- # directory where you want your roads data to be placed
+roads_dir <- "" # directory where you want your roads data to be placed
 
 # The following variables come from the command line when running as bash. Bash
 # scripting is a method for expediting processing using a computing cluster.
@@ -36,7 +36,9 @@ b <- as.numeric(args[1]) # state FIPS index; b=8 for DC
 # Reading in stateFIPS to allow for filtering by state in bash script. If you
 # are not using a bash script just use line 43 below.
 #
-stateFIPS <- read.csv(paste0(fips_dir, "US_States_FIPS_Codes.csv"), stringsAsFactors = FALSE)
+stateFIPS <- read.csv(paste0(fips_dir, "US_States_FIPS_Codes.csv"), stringsAsFactors = FALSE,
+                      checknames = F)
+colnames(stateFIPS)[1] <- "StFIPS"
 stateFIPS <- stateFIPS$StFIPS     #integer; does not contain leading zeroes
 stateFIPS <- formatC(stateFIPS[b], width = 2, format = "fg", flag = "0")
 
@@ -45,7 +47,9 @@ stateFIPS <- formatC(stateFIPS[b], width = 2, format = "fg", flag = "0")
 
 # Develop list of all counties for the state specified using tigris package.
 #
+print(paste0("Developing list of counties for state with FIPS ", stateFIPS))
 counties <- tigris::counties(state = stateFIPS, year = 2020, cb = TRUE)
+print(paste0("There are ", nrow(counties), " counties in this state."))
 counties <- unique(counties[[grep("^COUNTYFP", names(counties), ignore.case = TRUE)]])
 
 # Download statewide roads using the TIGRIS package

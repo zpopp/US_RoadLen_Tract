@@ -5,7 +5,7 @@
 #$ -pe omp 16
 
 module load R/4.3.1
-Rscript /projectnb/anchor/Data_Hub/Data_Requests/ZachP/Nationwide_TIGRIS/Code/3_Nationwide_Roads_Join_v01.R
+Rscript 3A_Nationwide_Roads_Join_v01.R
 
 ## In Terminal, cd to the directory in which this bash script is located. 
 ## qsub -P climlab 3B_Nationwide_Roads_Join_v01.sh

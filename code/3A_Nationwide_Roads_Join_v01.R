@@ -16,8 +16,8 @@ library(sf)
 
 # Set directories for input and output
 #
-roads_county_dir <- # this is the directory where the tract sum road length measures for each county has been stored
-roads_combined_dir <- # this is the directory where you want your final nationwide output
+roads_county_dir <- "" # this is the directory where the tract sum road length measures for each county has been stored
+roads_combined_dir <- "" # this is the directory where you want your final nationwide output
 
 # Create list of all county-wide tract-level road measures data
 #
